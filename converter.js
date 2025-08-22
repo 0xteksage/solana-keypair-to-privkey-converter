@@ -22,7 +22,12 @@ function toBase58(bytes) {
 }
 
 // Path to your keypair.json file (update this if needed)
-const keypairPath = './wallets/123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz.json'; //input json here
+const keypairName = process.argv[2];
+if (!keypairName) {
+    console.error('Usage: node converter.js <keypairName>');
+    process.exit(1);
+}
+const keypairPath = `./wallets/${keypairName}.json`;
 
 try {
     // Read the JSON keypair file
